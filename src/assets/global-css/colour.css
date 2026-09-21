@@ -1,0 +1,27 @@
+:root {
+  /* Backgrounds */
+  --color-background: #F6F5F0;       /* Main page background */
+  --color-surface: #FFFFFF;          /* Cards, inputs and navigation */
+
+  /* Text */
+  --color-title: #216C60;            /* "daily macro" title */
+  --color-text-primary: #183C38;     /* Headings and main text */
+  --color-text-secondary: #63746F;   /* Labels and supporting text */
+  --color-text-on-primary: #FFFFFF;  /* Text on teal buttons */
+
+  /* Today page cards */
+  --color-tdee-background: #E3F0E8;     /* TDEE card: light mint */
+  --color-consumed-background: #FFFFFF; /* Consumed calories card: white */
+  --color-balance-background: #F7D9BF;  /* Surplus/deficit card: apricot */
+
+  /* Buttons and accents */
+  --color-primary: #216C60;          /* Primary buttons, links and stars */
+  --color-primary-soft: #E3F0E8;     /* Active navigation background */
+
+  /* Borders and dividers */
+  --color-border: #DDE5DF;           /* Input borders and dividing lines */
+
+  /* Mockup device frames */
+  --color-desktop-frame: #DCE3DD;    /* Outer desktop frame */
+  --color-mobile-frame: #183C38;     /* Phone frame and home indicator */
+}

@@ -1,0 +1,125 @@
+h1 {
+    margin-bottom: 10px;
+    color: var(--color-title);
+}
+
+#cal-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+}
+
+#tdee-stat {
+    grid-column: span 2;
+    background-color: var(--color-tdee-background);
+}
+
+#tdee-stat span {
+    font-weight: var(--font-normal-weight);
+    font-size: var(--font-normal-size);
+    color: var(--color-text-secondary);
+}
+
+#consumed-stat {
+    background-color: var(--color-consumed-background);
+}
+
+#balance-stat {
+    background-color: var(--color-balance-background);
+}
+
+.cal-card {
+    background-color: white;
+    border-radius: 15px;
+
+    padding: 10px;
+}
+
+.cal-card p {
+    font-weight: var(--font-normal-weight);
+    margin: 0;
+}
+
+#estimated-tdee, #consumed-cal, #balance-cal {
+    font-size: 30px;
+    font-weight: var(--font-heading-weight);
+}
+
+#food-log-text { 
+    margin: 5px 0;
+}
+
+#food-log {
+    height: 40vh;
+    overflow-y: auto;
+}
+
+#food-log {
+    list-style: none;
+    padding: 10px;
+}
+
+#food-log h2 {
+    font-size: var(--font-log-heading-size);
+}
+
+#food-log p {
+    font-size: var(--font-log-normal-size);
+    margin: 0;
+    margin-top: 3px;
+}
+
+#food-log li {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#food-log .item-name-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+#food-log li::before {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    content: "L";
+
+    margin-right: 10px;
+
+    width: 40px;
+    height: 40px;
+    font-weight: var(--font-heading-weight);
+
+    border-radius: 5px;
+    background-color: var(--color-tdee-background);
+    color: var(--color-title);
+}
+
+.item-cals {
+    margin-right: auto;
+}
+
+.item-favouriting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+#add-item-btn {
+    width: 100%;
+    padding: 10px 15px;
+
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    color: var(--color-text-on-primary);
+}
