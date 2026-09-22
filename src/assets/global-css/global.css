@@ -64,12 +64,12 @@ ul {
 }
 
 /* Inputs */
-input {
+input, select {
     background-color: var(--color-surface);
     border: 2px solid var(--color-border);
     border-radius: 10px;
 
-    padding: 10px;
+    padding: 15px 10px;
 }
 input[type="checkbox"] {
     position: relative;
@@ -127,4 +127,12 @@ nav a {
 nav a.active {
     background-color: var(--color-primary-soft);
     color: var(--color-primary);
+}
+
+h1 span, 
+h2 span, 
+h3 span {
+    font-weight: var(--font-normal-weight);
+    font-size: var(--font-log-normal-size);
+    color: var(--color-text-secondary);
 }

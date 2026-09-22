@@ -14,12 +14,6 @@ main {
     background-color: var(--color-tdee-background);
 }
 
-#tdee-stat span {
-    font-weight: var(--font-normal-weight);
-    font-size: var(--font-log-normal-size);
-    color: var(--color-text-secondary);
-}
-
 #consumed-stat {
     background-color: var(--color-consumed-background);
 }

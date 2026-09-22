@@ -1,0 +1,40 @@
+#settings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+    margin-bottom: 20px;
+}
+
+#activity-level {
+    grid-column: span 2;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting input::placeholder {
+    text-align: right;
+}
+
+#est-card {
+    background-color: var(--color-tdee-background);
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px; 
+}
+
+#save-btn, #cancel-btn {
+    border: none;
+    padding: 10px 5px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#cancel-btn {
+    color: var(--color-primary);
+    background-color: inherit;
+}
