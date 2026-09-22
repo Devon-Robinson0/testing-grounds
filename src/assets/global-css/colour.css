@@ -20,8 +20,4 @@
 
   /* Borders and dividers */
   --color-border: #DDE5DF;           /* Input borders and dividing lines */
-
-  /* Mockup device frames */
-  --color-desktop-frame: #DCE3DD;    /* Outer desktop frame */
-  --color-mobile-frame: #183C38;     /* Phone frame and home indicator */
 }

@@ -1,6 +1,5 @@
-h1 {
-    margin-bottom: 10px;
-    color: var(--color-title);
+main {
+    border-bottom: 2px solid var(--color-border);
 }
 
 #cal-stats {
@@ -17,7 +16,7 @@ h1 {
 
 #tdee-stat span {
     font-weight: var(--font-normal-weight);
-    font-size: var(--font-normal-size);
+    font-size: var(--font-log-normal-size);
     color: var(--color-text-secondary);
 }
 
@@ -51,13 +50,10 @@ h1 {
 }
 
 #food-log {
-    height: 40vh;
-    overflow-y: auto;
-}
-
-#food-log {
     list-style: none;
     padding: 10px;
+    height: 40vh;
+    overflow-y: auto;
 }
 
 #food-log h2 {
@@ -120,6 +116,5 @@ h1 {
     padding: 10px 15px;
 
     background-color: var(--color-primary);
-    border-radius: 10px;
     color: var(--color-text-on-primary);
 }

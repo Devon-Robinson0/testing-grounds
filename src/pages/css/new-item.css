@@ -1,0 +1,80 @@
+.back-link {
+    color: var(--color-title);
+}
+
+#favourites-list {
+    padding: 10px;
+    height: 40vh;
+    overflow-y: auto;
+}
+
+#favourites-list h2 {
+    font-size: var(--font-log-heading-size);
+}
+
+#favourites-list p {
+    font-size: var(--font-log-normal-size);
+    margin: 0;
+    margin-top: 3px;
+}
+
+#favourites-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#favourites-list .item-name-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+#favourites-list li::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    margin-right: 5px;
+
+    background-image: url("../../assets/icons/filled-star-icon.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.text-container {
+    display: inline-block;
+    margin-right: auto;
+}
+
+#add-to-log-btn {
+    border-radius: 5px;
+
+    padding: 5px 15px;
+}
+
+#create-item-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#item-cal-input::placeholder {
+    text-align: right;
+}
+
+.save-to-fav-btn-container {
+    display: flex;
+    align-items: center;
+}
+
+#add-item-btn {
+    padding: 10px 15px;
+}

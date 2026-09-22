@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page Cal Tracker</title>
+    <link rel="stylesheet" href="../assets/global-css/global.css" />
+    <link rel="stylesheet" href="./css/new-item.css" />
+</head>
+<body>
+    <main>
+        <h1>daily macro</h1>
+
+        <a href="index.html" class="back-link">&lt; Back to daily</a>
+        <h2>Add item</h2>
+        <p>Adding to today</p>
+
+        <h2>Choose a favourite</h2>
+        <ul id="favourites-list">
+            <li>
+                <div class="text-container">
+                    <h2>Example item</h2>
+                    <p>420kcal</p>
+                </div>
+                <button id="add-to-log-btn">&plus;Add</button>
+            </li>
+            <li>
+                <div class="text-container">
+                    <h2>Example item</h2>
+                    <p>420kcal</p>
+                </div>
+                <button id="add-to-log-btn">&plus;Add</button>
+            </li>
+        </ul>
+        
+        <h2>Or create new</h2>
+        <form id="create-item-form">
+            <label for="item-name-input">Item Name:</label>
+            <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" />
+
+            <label for="item-cal-input">Calories</label>
+            <input id="item-cal-input" type="number" placeholder="kcal" />
+
+            <div class="save-to-fav-btn-container">
+                <input id="save-to-fav-btn" type="checkbox" />
+                <label for="save-to-fav-btn">Save to favourites</label>
+            </div>
+
+            <button id="add-item-btn">Add new item</button>
+        </form>
+
+    </main>
+    <nav>
+        <a href="index.html" class="active">Daily</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+</body>
+</html>
