@@ -34,11 +34,6 @@ main {
     margin: 0;
 }
 
-#estimated-tdee, #consumed-cal, #balance-cal {
-    font-size: 30px;
-    font-weight: var(--font-heading-weight);
-}
-
 #food-log-text { 
     margin: 5px 0;
 }
