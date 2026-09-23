@@ -10,22 +10,16 @@ const cancelBtn = document.getElementById("cancel-btn");
 // display
 const estTDEE = document.getElementById("tdee-estimate");
 
-let userSettings;
+let userSettings = {
+    age: 19,
+    gender: "male",
+    weight: 0,
+    height: 0,
+    activityLevel: "sedentary",
+    tdee: 0
+};
 
-try {
-    userSettings = JSON.parse(localStorage.getItem("userSettings"));
-} catch {
-    console.log("cant find user settings, setting default");
-    userSettings = {
-        age: 19,
-        gender: "male",
-        weight: 0,
-        height: 0,
-        activityLevel: "sedentary",
-        tdee: 0
-    };
-    localStorage.setItem("userSettings", JSON.stringify(userSettings));
-}
+userSettings = JSON.parse(localStorage.getItem("userSettings")) ?? userSettings;
 
 ageInput.value = userSettings.age;
 genderInput.value = userSettings.gender;

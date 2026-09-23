@@ -93,12 +93,34 @@ main {
     margin-right: auto;
 }
 
-.item-favouriting {
+.item-favouriting, 
+.item-delete {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
+
+    background-color: inherit;
+    border: none;
 }
+
+.item-delete:hover {
+    fill: red;
+}
+
+.filled {
+    display: none;
+}
+.filled.show {
+    display: unset;
+}
+.hollow {
+    display: none;
+}
+.hollow.show {
+    display: unset;
+}
+
 
 #add-item-btn {
     width: 100%;

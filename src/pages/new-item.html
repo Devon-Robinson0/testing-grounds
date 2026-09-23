@@ -15,25 +15,7 @@
         <h2>Add item</h2>
         <p>Adding to today</p>
 
-        <h2>Choose a favourite</h2>
-        <ul id="favourites-list">
-            <li>
-                <div class="text-container">
-                    <h2>Example item</h2>
-                    <p>420kcal</p>
-                </div>
-                <button id="add-to-log-btn">&plus;Add</button>
-            </li>
-            <li>
-                <div class="text-container">
-                    <h2>Example item</h2>
-                    <p>420kcal</p>
-                </div>
-                <button id="add-to-log-btn">&plus;Add</button>
-            </li>
-        </ul>
-        
-        <h2>Or create new</h2>
+        <h2>Create new</h2>
         <form id="create-item-form">
             <label for="item-name-input">Item Name:</label>
             <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" />
@@ -46,13 +28,19 @@
                 <label for="save-to-fav-btn">Save to favourites</label>
             </div>
 
-            <button id="add-item-btn">Add new item</button>
+            <button id="add-item-btn" type="button">Add new item</button>
         </form>
+    
+        <h2>Or choose a favourite</h2>
+        <ul id="favourites-list">
+            
+        </ul>
 
     </main>
     <nav>
         <a href="index.html" class="active">Daily</a>
         <a href="settings.html">Settings</a>
     </nav>
+    <script src="js/new-item.js"></script>
 </body>
 </html>

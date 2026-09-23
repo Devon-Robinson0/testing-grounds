@@ -74,9 +74,12 @@ input, select {
 input[type="checkbox"] {
     position: relative;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+    margin: 0;
+    margin-right: 5px;
 }
 input[type="checkbox"]:checked {
     background-color: var(--color-primary);
@@ -86,7 +89,7 @@ input[type="checkbox"]:checked:before {
     top: 0;
     left: 0;
 
-    transform: translate(50%, 20%);
+    transform: translate(75%, 40%);
     content: "✓";
     color: var(--color-text-on-primary);
 }
