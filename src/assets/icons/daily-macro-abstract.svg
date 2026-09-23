@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="48px" height="48px" role="img" aria-labelledby="title desc">
+  <title id="title">Daily Macro abstract logo</title>
+  <desc id="desc">Three rounded shapes in teal, sage and pale green form a circular swirl.</desc>
+  <path id="teal" transform="translate(8.8 4.3) scale(0.95)" fill="#216C60" d="M160 20 C226 20 276 63 294 126 C268 104 239 103 214 116 C185 132 166 158 139 153 C105 147 90 123 94 93 C98 50 125 20 160 20 Z"/>
+  <path id="pale-green" fill="#A5CBBB" transform="rotate(120 160 160) translate(8.8 4.3) scale(0.95)" d="M160 20 C226 20 276 63 294 126 C268 104 239 103 214 116 C185 132 166 158 139 153 C105 147 90 123 94 93 C98 50 125 20 160 20 Z"/>
+  <path id="sage" fill="#85B5A0" transform="rotate(240 160 160) translate(8.8 4.3) scale(0.95)" d="M160 20 C226 20 276 63 294 126 C268 104 239 103 214 116 C185 132 166 158 139 153 C105 147 90 123 94 93 C98 50 125 20 160 20 Z"/>
+</svg>

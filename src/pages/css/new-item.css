@@ -1,5 +1,10 @@
 .back-link {
+    display: inline-block;
     color: var(--color-title);
+}
+
+.header {
+    margin: 10px 0;
 }
 
 #favourites-list {
@@ -61,11 +66,23 @@
 }
 
 #create-item-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr .5fr .5fr;
 
     margin-bottom: 30px;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+#create-item-form .form-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.long-input {
+    grid-column: span 2;
 }
 
 #item-cal-input::placeholder {
@@ -78,5 +95,10 @@
 }
 
 #add-item-btn {
-    padding: 10px 15px;
+    padding: 15px 10px;
+    font-size: var(--font-log-normal-size);
+}
+
+.today-text {
+    margin: 0;
 }

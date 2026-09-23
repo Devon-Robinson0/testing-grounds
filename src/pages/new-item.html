@@ -18,25 +18,41 @@
     </nav>
     <main>
         <h1 class="mobile-header">daily macro</h1>
+        <img id="daily-macro-logo" src="../assets/icons/daily-macro-abstract.svg" />
 
         <a href="index.html" class="back-link">&lt; Back to daily</a>
-        <h2>Add item</h2>
-        <p>Adding to today</p>
+        <!-- <h2 class="header">Add item</h2>
+        <p class="today-text">Adding to today</p> -->
 
-        <h2>Create new</h2>
+        <h2 class="header">Create new</h2>
         <form id="create-item-form">
-            <label for="item-name-input">Item Name:</label>
-            <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" />
+            <div class="form-input long-input">
+                <label for="item-name-input">Item Name:</label>
+                <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" />
+            </div>
+            
+            <div class="form-input" >
+                <label for="item-cal-input">Calories</label>
+                <input id="item-cal-input" type="number" placeholder="kcal" />
+            </div>
 
-            <label for="item-cal-input">Calories</label>
-            <input id="item-cal-input" type="number" placeholder="kcal" />
+            <div class="form-input">
+                <label for="item-type-input">Meal type</label>
+                <select id="item-type-input">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="brunch">Brunch</option>
+                    <option value="lunch" selected>Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                </select>
+            </div>
 
-            <div class="save-to-fav-btn-container">
+            <div class="save-to-fav-btn-container long-input beside">
                 <input id="save-to-fav-btn" type="checkbox" />
                 <label for="save-to-fav-btn">Save to favourites</label>
             </div>
 
-            <button id="add-item-btn" type="button">Add new item</button>
+            <button id="add-item-btn" type="button" class="long-input">Add new item</button>
         </form>
     
         <h2>Or choose a favourite</h2>

@@ -55,7 +55,7 @@ p.title {
 #food-log {
     list-style: none;
     padding: 10px;
-    height: 40vh;
+    height: 30vh;
     overflow-y: auto;
 
     margin-top: 5px;
@@ -114,10 +114,17 @@ p.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: 5%;
 
     background-color: inherit;
     border: none;
+
+    transition: transform 0.3s ease;
+}
+
+.item-favouriting:hover,
+.item-delete:hover {
+    transform: scale(1.1);
 }
 
 .item-delete:hover {
@@ -154,6 +161,7 @@ p.title {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
         height: 15vh;
+        gap: 10px;
     }
 
     #tdee-stat {
@@ -169,8 +177,24 @@ p.title {
     }
 
     #food-log-container {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 5fr;
+        row-gap: 10px;
+
+        margin-top: 10px;
+    }
+
+    #food-log {
+        border: none;
+        border-radius: 15px;
+        grid-column: span 2;
+        height: 40vh;
+    }
+
+    #food-log .food-item {
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 5px;
     }
 
     #add-item-btn {

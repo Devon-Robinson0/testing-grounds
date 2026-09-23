@@ -9,11 +9,9 @@
     --font-heading-weight: 700;
 
 /*  */
-    --font-normal-size: 24px;
-    --font-heading-size: 30px;
-    --font-sub-heading-size: 24px;
-    --font-log-heading-size: 16px;
-    --font-log-normal-size: 12px;
+    --font-normal-size: 1rem;
+    --font-heading-size: 2rem;
+    --font-heading-size-desktop: 2.5rem;
 }
 
 body {
@@ -30,6 +28,12 @@ main {
 
 .desktop-nav {
     display: none;
+}
+
+#daily-macro-logo {
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 h1, h2, h3 {
@@ -49,7 +53,7 @@ h2 {
 }
 
 h3 {
-    font-size: var(--font-sub-heading-size);
+    font-size: var(--font-heading-size);
 }
 
 p, a, label {
@@ -76,6 +80,7 @@ input, select {
     border-radius: 10px;
 
     padding: 15px 10px;
+    font-size: min(16px);
 }
 input[type="checkbox"] {
     position: relative;
@@ -105,6 +110,10 @@ button {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.mobile-header {
+    font-size: 1.5rem;
 }
 
 /* Nav bar */
@@ -164,11 +173,11 @@ button {
 
 .pair {
     font-weight: var(--font-normal-weight);
-    font-size: var(--font-log-normal-size);
+    font-size: var(--font-normal-size);
     color: var(--color-text-secondary);
 }
 
-.pair #estimated-tdee {
+.pair #estimated-tdee, .pair #tdee-estimate {
     font-weight: var(--font-heading-weight);
     font-size: var(--font-heading-size);
     color: var(--color-text-primary);
@@ -181,11 +190,15 @@ button {
     }
 
     h1, h2, h3 {
-        font-size: 2.5rem;
+        font-size: var(--font-heading-size-desktop);
     }
 
-    p, a, label {
-        font-size: 1rem;
+    .pair #estimated-tdee, .pair #tdee-estimate {
+        font-size: var(--font-heading-size-desktop);
+    }
+
+    p, a, label, span {
+        font-size: var(--font-normal-size);
     }
 
     .mobile-nav {
