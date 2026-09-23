@@ -15,7 +15,8 @@
   --color-balance-background: #F7D9BF;  /* Surplus/deficit card: apricot */
 
   /* Buttons and accents */
-  --color-primary: #216C60;          /* Primary buttons, links and stars */
+  --color-primary: #216C60;  
+  --color-primary-hover: #185247;        /* Primary buttons, links and stars */
   --color-primary-soft: #E3F0E8;     /* Active navigation background */
 
   /* Borders and dividers */

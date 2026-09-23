@@ -137,13 +137,16 @@ p.title {
     display: unset;
 }
 
-
 #add-item-btn {
     width: 100%;
     padding: 10px 15px;
 
     background-color: var(--color-primary);
     color: var(--color-text-on-primary);
+}
+
+#add-item-btn:hover {
+    background-color: var(--color-primary-hover);
 }
 
 @media (min-width: 768px) {
@@ -163,5 +166,18 @@ p.title {
 
     .kcal {
         margin-left: 0;
+    }
+
+    #food-log-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #add-item-btn {
+        width: fit-content;
+        padding: 20px 40px 20px 20px;
+        margin-left: auto;
+        font-size: 1rem;
+        font-weight: 700;
     }
 }

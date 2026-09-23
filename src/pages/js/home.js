@@ -28,10 +28,10 @@ let userSettings = {
     };
 
 addBtn.addEventListener("click", () => {
-    window.location.href = "/src/pages/new-item.html";
+    window.location.href = "./new-item.html";
 });
 
-userSettings = JSON.parse(localStorage.getItem("userSettings")) ?? [];
+userSettings = JSON.parse(localStorage.getItem("userSettings")) ?? userSettings;
 
 
 estTDEE.textContent = userSettings.tdee.toLocaleString();

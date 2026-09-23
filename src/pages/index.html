@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="./css/home.css" />
 </head>
 <body>
-    <main>
+    <nav class="desktop-nav">
         <h1>daily macro</h1>
+
+        <div class="link-holder">
+            <a href="index.html" class="active">Daily</a>
+            <a href="settings.html">Settings</a>
+        </div>
+    </nav>
+    <main>
+        <h1 class="mobile-header">daily macro</h1>
         <h2>Today</h2>
         <p id="today-date">Mon, 21 September</p>
 
@@ -33,13 +41,13 @@
         <div id="food-log-container">
             <h3 id="food-log-text">Food Log</h3>
 
-            <button id="add-item-btn">&plus;Add item</button>
+            <button id="add-item-btn">&plus; Add item</button>
             <ul id="food-log">
     
             </ul>
         </div>
     </main>
-    <nav>
+    <nav class="mobile-nav">
         <a href="index.html" class="active">Daily</a>
         <a href="settings.html">Settings</a>
     </nav>

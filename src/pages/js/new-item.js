@@ -34,7 +34,7 @@ favList.forEach(fav => {
         foodLog.push(newItem);
         localStorage.setItem("food-log", JSON.stringify(foodLog));
 
-        window.location.href = "/src/pages/index.html";
+        window.location.href = "./index.html";
     });
 });
 
@@ -74,7 +74,7 @@ addItemBtn.addEventListener("click", () => {
 
     localStorage.setItem("food-log", JSON.stringify(foodLog));
 
-    window.location.href = "/src/pages/index.html";
+    window.location.href = "./index.html";
 });
 
 function getId(log) {
