@@ -96,7 +96,8 @@ input[type="checkbox"]:checked:before {
 button {
     background-color: var(--color-primary);
     color: var(--color-text-on-primary);
-    border-radius: 10px
+    border-radius: 10px;
+    border: none;
 }
 
 /* Nav bar */
@@ -138,8 +139,22 @@ nav a.active {
     color: var(--color-text-secondary);
 }
 
-.pair span {
+.pair #estimated-tdee {
     font-weight: var(--font-heading-weight);
     font-size: var(--font-heading-size);
     color: var(--color-text-primary);
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
 }

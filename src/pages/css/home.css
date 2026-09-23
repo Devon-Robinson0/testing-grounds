@@ -14,6 +14,15 @@ main {
     background-color: var(--color-tdee-background);
 }
 
+.kcal {
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+p.title {
+    font-weight: 700;
+}
+
 #consumed-stat {
     background-color: var(--color-consumed-background);
 }
@@ -23,14 +32,18 @@ main {
 }
 
 .cal-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background-color: white;
     border-radius: 15px;
 
-    padding: 10px;
+    padding: 15px;
+    gap: 5px;
 }
 
 .cal-card p {
-    font-weight: var(--font-normal-weight);
+    /* font-weight: var(--font-normal-weight); */
     margin: 0;
 }
 
@@ -131,4 +144,24 @@ main {
 
     background-color: var(--color-primary);
     color: var(--color-text-on-primary);
+}
+
+@media (min-width: 768px) {
+    #cal-stats {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        height: 15vh;
+    }
+
+    #tdee-stat {
+        grid-column: span 1;
+    }
+
+    #estimated-tdee {
+        display: block;
+    }
+
+    .kcal {
+        margin-left: 0;
+    }
 }

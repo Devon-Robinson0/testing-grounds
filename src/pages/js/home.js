@@ -6,6 +6,17 @@ const consumedStat = document.getElementById("consumed-cal");
 const balanceStat = document.getElementById("balance-cal");
 const balanceText = document.getElementById("sur-or-def-text");
 const foodLogList = document.getElementById("food-log");
+const todayDate = document.getElementById("today-date");
+
+const date = new Date;
+
+const options = {
+    weekday: "short",
+    day: "numeric",
+    month: "long"
+}
+
+todayDate.textContent = (new Date).toLocaleDateString("en-GB", options);
 
 let userSettings = {
         age: 19,

@@ -11,20 +11,20 @@
     <main>
         <h1>daily macro</h1>
         <h2>Today</h2>
-        <p>Mon, 21 September</p>
+        <p id="today-date">Mon, 21 September</p>
 
         <div id="cal-stats">
             <div id="tdee-stat" class="cal-card">
-                <p>estimated TDEE</p>
-                <h3 class="pair"><span id="estimated-tdee">2,400</span> kcal / day</h3>
+                <p class="title">ESTIMATED TDEE</p>
+                <h3 class="pair"><span id="estimated-tdee">2,400</span></h3><p class="kcal">kcal / day</p>
             </div>
             <div id="consumed-stat" class="cal-card">
-                <p>consumed</p>
+                <p class="title">CONSUMED</p>
                 <h3 id="consumed-cal">0</h3>
                 <p>kcal logged</p>
             </div>
             <div id="balance-stat" class="cal-card">
-                <p>balance</p>
+                <p class="title">BALANCE</p>
                 <h3 id="balance-cal">0</h3>
                 <p>kcal | <span id="sur-or-def-text">deficit</span></p>
             </div>
@@ -32,7 +32,7 @@
 
         <div id="food-log-container">
             <h3 id="food-log-text">Food Log</h3>
-            
+
             <button id="add-item-btn">&plus;Add item</button>
             <ul id="food-log">
     
