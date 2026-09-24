@@ -8,7 +8,18 @@ const balanceText = document.getElementById("sur-or-def-text");
 const foodLogList = document.getElementById("food-log");
 const todayDate = document.getElementById("today-date");
 
-const date = new Date;
+const date = new Date();
+const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+const lastDate = localStorage.getItem("last-date") ?? formattedDate;
+
+if (lastDate < formattedDate) {
+    console.log("new day");
+    localStorage.setItem("last-date", formattedDate);
+
+    foodLogList.innerHTML = "";
+    localStorage.setItem("food-log", JSON.stringify([]));
+}
 
 const options = {
     weekday: "short",
