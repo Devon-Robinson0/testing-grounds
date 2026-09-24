@@ -14,6 +14,8 @@ const errorCount = document.querySelector(".error-count");
 const nameError = document.getElementById("name-error");
 const calError = document.getElementById("cal-error");
 
+const errors = {};
+
 updateList();
 
 function updateList() {
@@ -61,8 +63,6 @@ function updateList() {
 
 
 addItemBtn.addEventListener("click", () => {
-    const errors = {};
-
     if (itemNameInput.value.trim() === "") {
         errors.name = "Enter an item name";
     }
@@ -121,8 +121,10 @@ function displayErrors(errors) {
     errorBox.style.display = "grid";
     errorCount.querySelector("span").textContent = Object.keys(errors).length;
 
+    const oldErrorNames = document.querySelectorAll(".error-name");
+    oldErrorNames.forEach(name => name.remove());
     for (const error in errors) {
-        errorCount.insertAdjacentHTML("afterend", `<p>${errors[error]}</p>`);
+        errorCount.insertAdjacentHTML("afterend", `<p class="error-name ${error}">${errors[error]}</p>`);
 
         if (error === "name") {
             nameError.hidden = false;
@@ -134,3 +136,34 @@ function displayErrors(errors) {
         }
     }
 }
+
+itemNameInput.addEventListener("change", () => {
+    if (itemNameInput.value.trim() !== "") {
+        nameError.hidden = true;
+        nameError.closest(".form-input").querySelector("input").classList.remove("error");
+        delete errors.name;
+        const oldErrorName = document.querySelector(".error-name.name");
+        oldErrorName.remove();
+
+        if (Object.keys(errors).length > 0) {
+            errorCount.querySelector("span").textContent = Object.keys(errors).length;
+        } else {
+            errorBox.style.display = "none";
+        }
+    }
+});
+itemCalInput.addEventListener("change", () => {
+    if (itemCalInput.value !== "") {
+        calError.hidden = true;
+        calError.closest(".form-input").querySelector("input").classList.remove("error");
+        delete errors.cal;
+        const oldErrorName = document.querySelector(".error-name.cal");
+        oldErrorName.remove();
+
+        if (Object.keys(errors).length > 0) {
+            errorCount.querySelector("span").textContent = Object.keys(errors).length;
+        } else {
+            errorBox.style.display = "none";
+        }
+    }
+});
