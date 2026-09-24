@@ -9,7 +9,10 @@
 </head>
 <body>
     <nav class="desktop-nav">
-        <h1>daily macro</h1>
+        <a id="logo-and-text" href="index.html">
+            <img id="daily-macro-logo-desktop" src="../assets/icons/daily-macro-abstract.svg" />
+            <h1>daily macro</h1>
+        </a>
 
         <div class="link-holder">
             <a href="index.html">Daily</a>
@@ -23,47 +26,53 @@
         <h2>Settings</h2>
         <p>Your profile, your daily estimate</p>
 
-        <div id="settings-container">
-            <div class="setting">
-                <label for="age-input">Age</label>
-                <input id="age-input" type="number" placeholder="years" />
+        <div id="settings-est-card">
+            <div id="settings-container">
+                <h2 id="personal-details">Personal details</h2>
+                <div class="setting">
+                    <label for="age-input">Age</label>
+                    <input id="age-input" type="number" placeholder="years" />
+                </div>
+                <div class="setting">
+                    <label for="gender-dropdown">Gender</label>
+                    <select id="gender-dropdown">
+                        <option value="male" selected >Male</option>
+                        <option value="female" >Female</option>
+                    </select>
+                </div>
+                <div class="setting">
+                    <label for="weight-input">Weight</label>
+                    <input id="weight-input" type="number" placeholder="kg" />
+                </div>
+                <div class="setting">
+                    <label for="height-input">Height</label>
+                    <input id="height-input" type="number" placeholder="cm" />
+                </div>
+                <div id="activity-level" class="setting">
+                    <label for="activity-level-dropdown">Activity level</label>
+                    <select id="activity-level-dropdown">
+                        <option value="sedentary" selected >Sedentary (little to no excercise)</option>
+                        <option value="lightly-active" >Lightly Active (1-3 days per week)</option>
+                        <option value="moderately-active" >Moderately-active Active (3-5 days per week)</option>
+                        <option value="very-active" >Very Active (6-7 days per week)</option>
+                        <option value="extra-active" >Extra Active (very hard training)</option>
+                    </select>
+                </div>
+
+                <button class="revert-btn desktop">Revert</button>
+                <button class="save-btn desktop">Save changes</button>
             </div>
-            <div class="setting">
-                <label for="gender-dropdown">Gender</label>
-                <select id="gender-dropdown">
-                    <option value="male" selected >Male</option>
-                    <option value="female" >Female</option>
-                </select>
-            </div>
-            <div class="setting">
-                <label for="weight-input">Weight</label>
-                <input id="weight-input" type="number" placeholder="kg" />
-            </div>
-            <div class="setting">
-                <label for="height-input">Height</label>
-                <input id="height-input" type="number" placeholder="cm" />
-            </div>
-            <div id="activity-level" class="setting">
-                <label for="activity-level-dropdown">Activity level</label>
-                <select id="activity-level-dropdown">
-                    <option value="sedentary" selected >Sedentary (little to no excercise)</option>
-                    <option value="lightly-active" >Lightly Active (1-3 days per week)</option>
-                    <option value="moderately-active" >Moderately-active Active (3-5 days per week)</option>
-                    <option value="very-active" >Very Active (6-7 days per week)</option>
-                    <option value="extra-active" >Extra Active (very hard training)</option>
-                </select>
-            </div>
+
+            <article id="est-card">
+                <p class="daily-est-text">Your daily estimate</p>
+                <h2 class="pair"><span id="tdee-estimate">2,400</span> <span>kcal/day</span></h2>
+                <p class="desktop-est-energy-text">Estimated energy used per day</p>
+                <p>Updates when you save your changes</p>
+            </article>
+
+            <button class="save-btn">Save changes</button>
+            <button class="revert-btn">Revert</button>
         </div>
-
-        <article id="est-card">
-            <p>Your daily estimate</p>
-            <h2 class="pair"><span id="tdee-estimate">2,400</span> <span>kcal/day</span></h2>
-            <p>Updates when you save your changes</p>
-        </article>
-
-        <button id="save-btn">Save changes</button>
-        <button id="cancel-btn">Cancel</button>
-
     </main>
     <nav class="mobile-nav">
         <a href="index.html" class="active">Daily</a>

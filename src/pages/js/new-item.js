@@ -1,6 +1,7 @@
 // inputs
 const itemNameInput = document.getElementById("item-name-input");
 const itemCalInput = document.getElementById("item-cal-input");
+const itemTypeInput = document.getElementById("item-type-input");
 const favourite = document.getElementById("save-to-fav-btn");
 
 // buttons
@@ -9,34 +10,51 @@ const addItemBtn = document.getElementById("add-item-btn");
 // display
 const favListDisplay = document.getElementById("favourites-list");
 
-const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+updateList();
 
-favList.forEach(fav => {
-    favListDisplay.insertAdjacentHTML("beforeend", `
-            <li id="fav-${fav.id}">
-                <div class="text-container">
-                    <h2>${fav.name}</h2>
-                    <p><span>${fav.cal} kcal</p>
-                </div>
-                <button id="add-to-log-btn">&plus;Add</button>
-            </li>
-        `
-    );
+function updateList() {
+    const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+    favListDisplay.innerHTML = "";
 
-    const addBtn = document.getElementById(`fav-${fav.id}`);
-    addBtn.addEventListener("click", () => {
-        const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+    favList.forEach(fav => {
+        favListDisplay.insertAdjacentHTML("beforeend", `
+                <li id="fav-${fav.id}">
+                    <div class="text-container">
+                        <h2>${fav.name}</h2>
+                        <p><span>${fav.cal}</span> kcal</p>
+                    </div>
+                    <button class="add-to-log-btn">&plus;Add</button>
+                    <button class="del-fav-btn"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                </li>
+            `
+        );
 
-        const newItem = { ...fav };
-        newItem.id = getId(foodLog);
-        newItem.isFav = false;
+        const addBtn = document.querySelector(`#fav-${fav.id} .add-to-log-btn`);
+        addBtn.addEventListener("click", () => {
+            const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
 
-        foodLog.push(newItem);
-        localStorage.setItem("food-log", JSON.stringify(foodLog));
+            const newItem = { ...fav };
+            newItem.id = getId(foodLog);
+            newItem.isFav = false;
 
-        window.location.href = "./index.html";
+            foodLog.push(newItem);
+            localStorage.setItem("food-log", JSON.stringify(foodLog));
+
+            window.location.href = "./index.html";
+        });
+
+        const delBtn = document.querySelector(`#fav-${fav.id} .del-fav-btn`);
+        delBtn.addEventListener("click", () => {
+            let favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+
+            favList = favList.filter(item => item.id !== fav.id);
+            localStorage.setItem("fav-list", JSON.stringify(favList));
+
+            updateList();
+        });
     });
-});
+}
+
 
 addItemBtn.addEventListener("click", () => {
     if (itemNameInput.value.trim() === "") {
@@ -59,6 +77,7 @@ addItemBtn.addEventListener("click", () => {
         id,
         name: itemNameInput.value,
         cal: itemCalInput.value,
+        type: itemTypeInput.value,
         isFav: favourite.checked
     };
 

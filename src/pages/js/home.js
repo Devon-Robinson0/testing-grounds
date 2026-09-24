@@ -44,11 +44,19 @@ function UpdateFoodLog() {
     foodLogList.innerHTML = "";
 
     foodLog.forEach(item => {
+        const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+        const favIds = favList.map(i => i.id);
+
+        let isFav = favIds.includes(item.id);
+        item.isFav = isFav;
+
+        localStorage.setItem("food-log", JSON.stringify(foodLog));
+
         foodLogList.insertAdjacentHTML("beforeend", `
             <li class="food-item" id="item-${item.id}">
                 <div class="item-name-content">
                     <h2 class="item-name">${item.name}</h2>
-                    <p class="item-time">breakfast</p>
+                    <p class="item-time">${item.type}</p>
                 </div>
                 <div class="item-cals">
                     <h2>${item.cal}</h2>
@@ -64,6 +72,10 @@ function UpdateFoodLog() {
             </li>
             `
         );
+
+        // Set list letter
+        const itemInList = document.getElementById(`item-${item.id}`);
+        itemInList.style.setProperty("--letter", JSON.stringify(item.name[0].toUpperCase() ?? "L"));
 
         const favBtn = document.querySelector(`#item-${item.id} .item-favouriting`);
         favBtn.addEventListener("click", () => {
@@ -85,8 +97,6 @@ function UpdateFoodLog() {
 
     balanceText.textContent = balance > 0 ? "surplus" : "deficit";
 }
-// localStorage.removeItem("food-log");
-// localStorage.removeItem("fav-list");
 
 function deleteItem(id) {
     let foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
@@ -133,5 +143,3 @@ function favouriteItem(id, favBtn) {
 }
 
 UpdateFoodLog();
-
-// localStorage.clear();

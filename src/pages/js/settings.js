@@ -5,8 +5,8 @@ const weightInput = document.getElementById("weight-input");
 const heightInput = document.getElementById("height-input");
 const activityLevelInput = document.getElementById("activity-level-dropdown");
 // buttons
-const saveBtn = document.getElementById("save-btn");
-const cancelBtn = document.getElementById("cancel-btn");
+const saveBtns = document.querySelectorAll(".save-btn");
+const revertBtns = document.querySelectorAll(".revert-btn");
 // display
 const estTDEE = document.getElementById("tdee-estimate");
 
@@ -21,45 +21,50 @@ let userSettings = {
 
 userSettings = JSON.parse(localStorage.getItem("userSettings")) ?? userSettings;
 
-ageInput.value = userSettings.age;
-genderInput.value = userSettings.gender;
-weightInput.value = userSettings.weight;
-heightInput.value = userSettings.height;
-activityLevelInput.value = userSettings.activityLevel;
-estTDEE.textContent = userSettings.tdee.toLocaleString();
+setDefaultValues();
 
-saveBtn.addEventListener("click", () => {
-    const age = Number(ageInput.value);
-    const gender = genderInput.value;
-    const weight = Number(weightInput.value);
-    const height = Number(heightInput.value);
-    const activityLevel = activityLevelInput.value;
+saveBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const age = Number(ageInput.value);
+        const gender = genderInput.value;
+        const weight = Number(weightInput.value);
+        const height = Number(heightInput.value);
+        const activityLevel = activityLevelInput.value;
 
-    let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+        let bmr = (10 * weight) + (6.25 * height) - (5 * age);
 
-    if (gender === "male") {
-        bmr += 5;
-    } else if (gender === "female") {
-        bmr -= 161;
-    } else {
-        console.log("Err: gender not detected correctly");
-    }
+        if (gender === "male") {
+            bmr += 5;
+        } else if (gender === "female") {
+            bmr -= 161;
+        } else {
+            console.log("Err: gender not detected correctly");
+        }
 
-    const tdee = Math.round(bmr * getActivityLevel(activityLevel));
+        const tdee = Math.round(bmr * getActivityLevel(activityLevel));
 
-    estTDEE.textContent = tdee.toLocaleString();
+        estTDEE.textContent = tdee.toLocaleString();
 
-    const newUserSettings = {
-        age,
-        gender,
-        weight,
-        height,
-        activityLevel,
-        tdee
-    };
+        const newUserSettings = {
+            age,
+            gender,
+            weight,
+            height,
+            activityLevel,
+            tdee
+        };
 
-    localStorage.setItem("userSettings", JSON.stringify(newUserSettings));
+        localStorage.setItem("userSettings", JSON.stringify(newUserSettings));
+        userSettings = newUserSettings;
+    });
 });
+
+revertBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        setDefaultValues();
+    });
+});
+
 
 function getActivityLevel(activityLevel) {
     let multiplier = 0;
@@ -85,4 +90,13 @@ function getActivityLevel(activityLevel) {
     }
 
     return multiplier;
+}
+
+function setDefaultValues() {
+    ageInput.value = userSettings.age;
+    genderInput.value = userSettings.gender;
+    weightInput.value = userSettings.weight;
+    heightInput.value = userSettings.height;
+    activityLevelInput.value = userSettings.activityLevel;
+    estTDEE.textContent = userSettings.tdee.toLocaleString();
 }

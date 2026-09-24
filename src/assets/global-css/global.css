@@ -11,7 +11,13 @@
 /*  */
     --font-normal-size: 1rem;
     --font-heading-size: 2rem;
+    --font-normal-size-desktop: 1.3rem;
     --font-heading-size-desktop: 2.5rem;
+
+    --font-log-heading: 1.3rem;
+    --font-log-heading-desktop: 1.4rem;
+    --font-log-normal: 0.8rem;
+    --font-log-normal: 1.1rem;
 }
 
 body {
@@ -34,6 +40,10 @@ main {
     position: absolute;
     top: 10px;
     right: 20px;
+}
+
+#daily-macro-logo-desktop {
+    display: none;
 }
 
 h1, h2, h3 {
@@ -100,7 +110,7 @@ input[type="checkbox"]:checked:before {
     top: 0;
     left: 0;
 
-    transform: translate(75%, 40%);
+    transform: translate(35%, 0);
     content: "✓";
     color: var(--color-text-on-primary);
 }
@@ -171,6 +181,13 @@ button {
     gap: 50px;
 }
 
+.desktop-nav .link-holder a {
+    transition: transform 0.3s ease;
+}
+.desktop-nav .link-holder a:hover {
+    transform: scale(1.1);
+}
+
 .pair {
     font-weight: var(--font-normal-weight);
     font-size: var(--font-normal-size);
@@ -189,6 +206,24 @@ button {
         margin-top: 100px;
     }
 
+    #daily-macro-logo {
+        display: none;
+    }
+    #daily-macro-logo-desktop {
+        display: block;
+    }
+
+    #logo-and-text {
+        display: flex;
+        flex-direction: row;
+
+        width: fit-content;
+        cursor: pointer;
+    }
+    #logo-and-text img {
+        margin-right: 10px;
+    }
+
     h1, h2, h3 {
         font-size: var(--font-heading-size-desktop);
     }
@@ -197,8 +232,14 @@ button {
         font-size: var(--font-heading-size-desktop);
     }
 
-    p, a, label, span {
-        font-size: var(--font-normal-size);
+    p, a, label, span, button {
+        font-size: var(--font-normal-size-desktop);
+    }
+
+    /* Inputs */
+    input, select {
+        padding: 20px 10px;
+        font-size: var(--font-normal-size-desktop);
     }
 
     .mobile-nav {
