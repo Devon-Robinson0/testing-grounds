@@ -9,6 +9,10 @@ const addItemBtn = document.getElementById("add-item-btn");
 
 // display
 const favListDisplay = document.getElementById("favourites-list");
+const errorBox = document.querySelector(".error-box");
+const errorCount = document.querySelector(".error-count");
+const nameError = document.getElementById("name-error");
+const calError = document.getElementById("cal-error");
 
 updateList();
 
@@ -57,13 +61,18 @@ function updateList() {
 
 
 addItemBtn.addEventListener("click", () => {
+    const errors = {};
+
     if (itemNameInput.value.trim() === "") {
-        console.log("Enter an item name");
-        return;
+        errors.name = "Enter an item name";
     }
 
     if (itemCalInput.value === "") {
-        console.log("Enter an item calories");
+        errors.cal = "Enter a calorie amount";
+    }
+
+    if (Object.keys(errors).length > 0) {
+        displayErrors(errors);
         return;
     }
 
@@ -106,4 +115,22 @@ function getId(log) {
     }
 
     return id;
+}
+
+function displayErrors(errors) {
+    errorBox.style.display = "grid";
+    errorCount.querySelector("span").textContent = Object.keys(errors).length;
+
+    for (const error in errors) {
+        errorCount.insertAdjacentHTML("afterend", `<p>${errors[error]}</p>`);
+
+        if (error === "name") {
+            nameError.hidden = false;
+            nameError.closest(".form-input").querySelector("input").classList.add("error");
+        }
+        if (error === "cal") {
+            calError.hidden = false;
+            calError.closest(".form-input").querySelector("input").classList.add("error");
+        }
+    }
 }

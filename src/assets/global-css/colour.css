@@ -21,6 +21,11 @@
   --color-primary-soft: #E3F0E8;     /* Active navigation background */
   --color-red-hover: #F13030;
 
+  /* Error box */
+  --color-error-bg: #FFF1F0;
+  --color-error-border: #D89590;
+  --color-error-text: #A93632;
+
   /* Borders and dividers */
   --color-border: #DDE5DF;           /* Input borders and dividing lines */
 }

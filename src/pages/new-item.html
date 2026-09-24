@@ -35,15 +35,23 @@
         <div id="form-choose-fav">
             <div class="container">
                 <h2 class="header">Create new</h2>
+                <div class="error-box">
+                    <img src="../assets/icons/error-icon.svg" />
+                    <div class="error-message-container">
+                        <h3 class="error-count">Please check <span>2</span> fields</h3>
+                    </div>
+                </div>
                 <form id="create-item-form">
                     <div class="form-input long-input">
                         <label for="item-name-input">Item Name:</label>
-                        <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" />
+                        <input id="item-name-input" type="text" placeholder="e.g. egg's on toast" aria-describedby="name-error" />
+                        <p id="name-error" class="error-text" hidden>Enter an item name</p>
                     </div>
                     
                     <div class="form-input" >
                         <label for="item-cal-input">Calories</label>
-                        <input id="item-cal-input" type="number" placeholder="kcal" />
+                        <input id="item-cal-input" type="number" min="1" max="10000" step="100" placeholder="kcal" aria-describedby="cal-error" />
+                        <p id="cal-error" class="error-text" hidden>Enter a calorie amount</p>
                     </div>
 
                     <div class="form-input">
@@ -63,10 +71,6 @@
                     </div>
 
                     <button id="add-item-btn" type="button" class="long-input">Add new item</button>
-
-                    <div class="error-box">
-                        
-                    </div>
                 </form>
             </div>
             
