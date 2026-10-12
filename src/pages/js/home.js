@@ -11,15 +11,17 @@ const todayDate = document.getElementById("today-date");
 const date = new Date();
 const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-const lastDate = localStorage.getItem("last-date") ?? formattedDate;
+const lastDate = localStorage.getItem("last-date");
 
-if (lastDate < formattedDate) {
+if (lastDate !== null && lastDate < formattedDate) {
     console.log("new day");
     localStorage.setItem("last-date", formattedDate);
 
     foodLogList.innerHTML = "";
     localStorage.setItem("food-log", JSON.stringify([]));
 }
+
+localStorage.setItem("last-date", formattedDate);
 
 const options = {
     weekday: "short",
@@ -58,7 +60,7 @@ function UpdateFoodLog() {
         const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
         const favIds = favList.map(i => i.id);
 
-        let isFav = favIds.includes(item.id);
+        let isFav = favIds.includes(item.favouriteId);
         item.isFav = isFav;
 
         localStorage.setItem("food-log", JSON.stringify(foodLog));
@@ -121,36 +123,91 @@ function deleteItem(id) {
     UpdateFoodLog();
 }
 
+// function favouriteItem(id, favBtn) {
+//     let foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+
+//     const item = foodLog.find(item => item.id === id);
+//     item.isFav = !item.isFav;
+
+//     const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+
+//     const hollowStar = favBtn.querySelector(".hollow");
+//     const filledStar = favBtn.querySelector(".filled");
+
+//     if (item.isFav) {
+//         hollowStar.classList.remove("show");
+//         filledStar.classList.add("show");
+
+//         favList.push(item);
+//     } else {
+//         hollowStar.classList.add("show");
+//         filledStar.classList.remove("show");;
+        
+//         const index = favList.findIndex(listItem => listItem.id === item.id);
+//         if (index !== -1) {
+//             favList.splice(index, 1);
+//         } else {
+//             console.log("cant find item to remove from favourites");
+//         }
+//     }
+
+//     localStorage.setItem("food-log", JSON.stringify(foodLog));
+//     localStorage.setItem("fav-list", JSON.stringify(favList));
+// }
 function favouriteItem(id, favBtn) {
-    let foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+    const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+    let favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
 
     const item = foodLog.find(item => item.id === id);
-    item.isFav = !item.isFav;
+    if (!item) return;
 
-    const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+    const favouriteId = item.favouriteId;
+    const isFav = favList.some(fav => fav.id === favouriteId);
 
-    const hollowStar = favBtn.querySelector(".hollow");
-    const filledStar = favBtn.querySelector(".filled");
+    if (isFav) {
+        // Remove the saved favourite
+        favList = favList.filter(fav => fav.id !== favouriteId);
 
-    if (item.isFav) {
-        hollowStar.classList.remove("show");
-        filledStar.classList.add("show");
-
-        favList.push(item);
+        // Disconnect every log entry linked to that favourite
+        foodLog.forEach(logItem => {
+            if (logItem.favouriteId === favouriteId) {
+                logItem.favouriteId = null;
+                logItem.isFav = false;
+            }
+        });
     } else {
-        hollowStar.classList.add("show");
-        filledStar.classList.remove("show");;
-        
-        const index = favList.findIndex(listItem => listItem.id === item.id);
-        if (index !== -1) {
-            favList.splice(favList.indexOf(item), 1);
-        } else {
-            console.log("cant find item to remove from favourites");
-        }
+        // Create a favourite with its own ID
+        const newFavourite = {
+            id: getId(favList),
+            name: item.name,
+            cal: item.cal,
+            type: item.type
+        };
+
+        favList.push(newFavourite);
+
+        // Connect this log entry to it
+        item.favouriteId = newFavourite.id;
+        item.isFav = true;
     }
 
     localStorage.setItem("food-log", JSON.stringify(foodLog));
     localStorage.setItem("fav-list", JSON.stringify(favList));
+
+    // Refresh every star in the log
+    UpdateFoodLog();
+}
+
+function getId(log) {
+    const usedIds = log.map(item => item.id);
+    console.log(usedIds);
+    let id = 1;
+
+    while (usedIds.includes(id)) {
+        id++;
+    }
+
+    return id;
 }
 
 UpdateFoodLog();

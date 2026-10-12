@@ -39,9 +39,12 @@ function updateList() {
         addBtn.addEventListener("click", () => {
             const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
 
-            const newItem = { ...fav };
-            newItem.id = getId(foodLog);
-            newItem.isFav = false;
+            const newItem = { 
+                ...fav,
+                id: getId(foodLog),
+                favouriteId: fav.id,
+                isFav: true
+            };
 
             foodLog.push(newItem);
             localStorage.setItem("food-log", JSON.stringify(foodLog));
@@ -55,6 +58,17 @@ function updateList() {
 
             favList = favList.filter(item => item.id !== fav.id);
             localStorage.setItem("fav-list", JSON.stringify(favList));
+
+            const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+
+            foodLog.forEach(item => {
+                if (item.favouriteId === fav.id) {
+                    item.favouriteId = null;
+                    item.isFav = false;
+                }
+            });
+
+            localStorage.setItem("food-log", JSON.stringify(foodLog));
 
             updateList();
         });
@@ -76,30 +90,34 @@ addItemBtn.addEventListener("click", () => {
         return;
     }
 
-    let foodLog = [];
-
-    foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
-
-    const id = getId(foodLog);
+    const foodLog = JSON.parse(localStorage.getItem("food-log")) ?? [];
+    const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
 
     const newItem = {
-        id,
+        id: getId(foodLog),
         name: itemNameInput.value,
         cal: itemCalInput.value,
         type: itemTypeInput.value,
+        favouriteId: null,
         isFav: favourite.checked
     };
 
     if (favourite.checked) {
-        const favList = JSON.parse(localStorage.getItem("fav-list")) ?? [];
+        const newFavourite = {
+            id: getId(favList),
+            name: newItem.name,
+            cal: newItem.cal,
+            type: newItem.type
+        };
 
-        favList.push(newItem);
+        // Link the log entry to its saved favourite
+        newItem.favouriteId = newFavourite.id;
+
+        favList.push(newFavourite);
         localStorage.setItem("fav-list", JSON.stringify(favList));
     }
 
     foodLog.push(newItem);
-    console.log(foodLog);
-
     localStorage.setItem("food-log", JSON.stringify(foodLog));
 
     window.location.href = "./index.html";
@@ -143,7 +161,9 @@ itemNameInput.addEventListener("change", () => {
         nameError.closest(".form-input").querySelector("input").classList.remove("error");
         delete errors.name;
         const oldErrorName = document.querySelector(".error-name.name");
-        oldErrorName.remove();
+        if (oldErrorName) {
+            oldErrorName.remove();
+        }
 
         if (Object.keys(errors).length > 0) {
             errorCount.querySelector("span").textContent = Object.keys(errors).length;
@@ -158,7 +178,9 @@ itemCalInput.addEventListener("change", () => {
         calError.closest(".form-input").querySelector("input").classList.remove("error");
         delete errors.cal;
         const oldErrorName = document.querySelector(".error-name.cal");
-        oldErrorName.remove();
+        if (oldErrorName) {
+            oldErrorName.remove();
+        }
 
         if (Object.keys(errors).length > 0) {
             errorCount.querySelector("span").textContent = Object.keys(errors).length;

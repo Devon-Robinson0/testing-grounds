@@ -137,6 +137,7 @@ button {
     justify-content: space-around;
 
     padding: 10px;
+    padding-bottom: 20px;
 
     width: calc(100% - 20px);
     background-color: var(--color-surface);
